@@ -3,8 +3,19 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
+# Heroku Postgres for production
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
+
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
+group :development do
+  gem 'sqlite3'
+  gem 'quiet_assets'
+end
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -24,7 +35,12 @@ gem 'haml-rails'
 gem 'redcarpet'
 gem 'kramdown'
 
+gem 'gritter', '~> 1.1.0'
+
 gem 'devise'
+
+#figaro is necessary for using my application.yml file for ENV variables
+gem 'figaro'
 
 gem 'friendly_id', '~> 5.0.0'
 
