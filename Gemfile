@@ -38,6 +38,7 @@ gem 'kramdown'
 gem 'gritter', '~> 1.1.0'
 
 gem 'devise'
+gem 'cancan'
 
 #figaro is necessary for using my application.yml file for ENV variables
 gem 'figaro'
