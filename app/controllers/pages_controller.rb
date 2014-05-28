@@ -15,6 +15,7 @@ class PagesController < ApplicationController
   # GET /pages/new
   def new
     @page = Page.new
+    authorize! :create, Page, message: "Please sign up for a free account to create pages."
   end
 
   # GET /pages/1/edit
@@ -24,6 +25,7 @@ class PagesController < ApplicationController
   # POST /pages
   # POST /pages.json
   def create
+    authorize! :create, @page, message: "You need to be signed up to do that."
     @page = Page.new(page_params)
 
     respond_to do |format|

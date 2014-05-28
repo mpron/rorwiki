@@ -15,6 +15,7 @@ class WikisController < ApplicationController
   # GET /wikis/new
   def new
     @wiki = Wiki.new
+    authorize! :create, Wiki, message: "Please sign up for a free account to create wikis."
   end
 
   # GET /wikis/1/edit
@@ -24,6 +25,7 @@ class WikisController < ApplicationController
   # POST /wikis
   # POST /wikis.json
   def create
+    authorize! :create, @wiki, message: "You need to be signed up to do that."
     @wiki = Wiki.new(wiki_params)
 
     respond_to do |format|
