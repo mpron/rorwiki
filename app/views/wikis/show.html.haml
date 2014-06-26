@@ -1,11 +1,13 @@
-%p#notice= notice
-
 %p
   %b Name:
   = @wiki.name
+
+= link_to "New Page", new_wiki_page_path(@wiki, @page)
+
 %p
-  %b Has many:
-  = @wiki.has_many
+  %b My test
+  = @pages.each do |page|
+    %p= link_to page.title, page
 
 = link_to 'Edit', edit_wiki_path(@wiki)
 \|

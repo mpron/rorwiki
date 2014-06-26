@@ -1,5 +1,5 @@
-= form_for @page do |f|
-  - if @page.errors.any?
+= form_for [wiki, page] do |f|
+  - if page.errors.any?
     #error_explanation
       %h2= "#{pluralize(@page.errors.count, "error")} prohibited this page from being saved:"
       %ul
@@ -12,8 +12,5 @@
   .field
     = f.label :body
     = f.text_area :body
-  .field
-    = f.label :belongs_to
-    = f.text_field :belongs_to
   .actions
     = f.submit 'Save'

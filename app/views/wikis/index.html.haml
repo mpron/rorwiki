@@ -3,7 +3,6 @@
 %table
   %tr
     %th Name
-    %th Has many
     %th
     %th
     %th
@@ -11,7 +10,6 @@
   - @wikis.each do |wiki|
     %tr
       %td= wiki.name
-      %td= wiki.has_many
       %td= link_to 'Show', wiki
       %td= link_to 'Edit', edit_wiki_path(wiki)
       %td= link_to 'Destroy', wiki, :method => :delete, :data => { :confirm => 'Are you sure?' }

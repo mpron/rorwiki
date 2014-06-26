@@ -1,16 +1,13 @@
 Rorwiki::Application.routes.draw do
 
-  resources :pages
-
-  resources :wikis
-
-  get "page/index"
-  get "page/show"
-  get "page/new"
-  get "page/edit"
   devise_for :users
-  get "welcome/index"
-  get "welcome/about"
+
+  resources :wikis do
+    resources :pages, except: [:index]
+  end
+
+  match "about" => 'welcome#about', via: :get
+
   root :to => 'welcome#index'
 
   

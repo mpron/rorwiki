@@ -3,6 +3,14 @@
     .row
       %h1 Wickerpedia!
     .row
-      = button_to "Sign Up", root_path, class: "button expand radius"
+      = button_to "Sign Up", user_registration_path, class: "button expand radius"
     .row
-      = button_to "Sign In", root_path, class: "button secondary expand radius"
+      = button_to "Sign In", new_user_session_path, class: "button secondary expand radius"
+
+    %br
+      = link_to "New Wiki", new_wiki_path
+    %br
+      - if current_user
+        = link_to "Sign out", destroy_user_session_path, method: :delete
+
+

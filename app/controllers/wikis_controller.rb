@@ -10,12 +10,14 @@ class WikisController < ApplicationController
   # GET /wikis/1
   # GET /wikis/1.json
   def show
+    @wiki = Wiki.find(params[:id])
+    @pages = @wiki.pages
   end
 
   # GET /wikis/new
   def new
     @wiki = Wiki.new
-    authorize! :create, Wiki, message: "Please sign up for a free account to create wikis."
+    #authorize! :create, @wiki, message: "Please sign up for a free account to create wikis."
   end
 
   # GET /wikis/1/edit
@@ -25,8 +27,8 @@ class WikisController < ApplicationController
   # POST /wikis
   # POST /wikis.json
   def create
-    authorize! :create, @wiki, message: "You need to be signed up to do that."
     @wiki = Wiki.new(wiki_params)
+    #authorize! :create, @wiki, message: "You need to be signed up to do that."
 
     respond_to do |format|
       if @wiki.save
@@ -71,6 +73,6 @@ class WikisController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wiki_params
-      params.require(:wiki).permit(:name)
+      params.require(:wiki).permit(:name, :public)
     end
 end

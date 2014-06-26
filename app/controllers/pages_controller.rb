@@ -15,11 +15,13 @@ class PagesController < ApplicationController
   # GET /pages/new
   def new
     @page = Page.new
-    authorize! :create, Page, message: "Please sign up for a free account to create pages."
+    #authorize! :create, @page, message: "Please sign up for a free account to create pages."
   end
 
   # GET /pages/1/edit
   def edit
+    @post = Post.find(params[:id])
+    authorize! :edit, @post, message: "You need to own the post to edit it."
   end
 
   # POST /pages
@@ -71,6 +73,6 @@ class PagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      params.require(:page).permit(:title, :body)
+      params.require(:page).permit(:title, :body, :wiki)
     end
 end
